@@ -15,7 +15,7 @@ import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
-const EXPIRATION_WINDOW_SECONDS = 15 * 60;
+const EXPIRATION_WINDOW_SECONDS = 60;
 
 router.post(
   '/api/orders',
@@ -45,7 +45,7 @@ router.post(
 
     //Setting expiration time on order
     const expiration = new Date();
-    expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS); // 15min
+    expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS); // 1 min
 
     //Building an order
     const order = Order.build({
